@@ -143,7 +143,7 @@ func NegotiateTunnelPort() (*int, error) {
 	kubeClient := client.GetKubeClient()
 	err := httpserver.CreateNamespaceIfNeeded(kubeClient, constants.SystemNamespace)
 	if err != nil {
-		return nil, errors.New("failed to create system namespace")
+		return nil, errors.New("failed to create system namespace" + err.Error())
 	}
 
 	tunnelPort, err := kubeClient.CoreV1().ConfigMaps(constants.SystemNamespace).Get(context.TODO(), modules.TunnelPort, metav1.GetOptions{})
