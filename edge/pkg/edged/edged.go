@@ -1120,7 +1120,7 @@ func (e *edged) syncPod() {
 		}
 		klog.Infof("result content is %s", result.Content)
 		switch resType {
-		case model.ResourceTypePod:
+		case model.ResourceTypePod, "pods":
 			if op == model.ResponseOperation && resID == "" && result.GetSource() == metamanager.MetaManagerModuleName {
 				err := e.handlePodListFromMetaManager(content)
 				if err != nil {
